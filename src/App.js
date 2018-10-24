@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MyCalendar from "./MyCalendar/MyCalendar";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
             Calendar Playground
         </header>
         <body>
-            Body
+            <MyCalendar/>
         </body>
       </div>
     );
