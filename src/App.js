@@ -3,6 +3,7 @@ import './App.css';
 import Basic from './Basic/Basic';
 import CustomHeader from './CustomHeader/CustomHeader';
 import Rendering from './Rendering/Rendering';
+import CustomToolbar from './CustomToolbar/CustomToolbar';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <body>
         <div className="d-none d-md-block">
             <Basic/>
+            <CustomToolbar/>
             <Rendering />
             <CustomHeader/>
         </div>
