@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import MyCalendar from "./MyCalendar/MyCalendar";
+import Basic from "./Basic/Basic";
 
 class App extends Component {
   render() {
@@ -10,7 +10,9 @@ class App extends Component {
             Calendar Playground
         </header>
         <body>
-            <MyCalendar/>
+        <div className="d-none d-md-block">
+            <Basic/>
+        </div>
         </body>
       </div>
     );
