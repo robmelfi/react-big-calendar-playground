@@ -12,7 +12,7 @@ import './Rendering.css';
 // to the correct localizer.
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-const Basic = props => {
+const Rendering = props => {
 
 
     function Event({ event }) {
@@ -76,4 +76,4 @@ const Basic = props => {
     );
 };
 
-export default Basic;
+export default Rendering;
