@@ -13,6 +13,15 @@ const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class CustomToolbar extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthIsActive: false,
+            weekIsActive: false,
+            dayIsActive: false,
+        };
+    }
+
     render() {
         let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
@@ -32,14 +41,29 @@ class CustomToolbar extends React.Component {
 
             const goToWeekView = () => {
                 toolbar.onView(BigCalendar.Views.WEEK)
+                this.setState({
+                    monthIsActive: false,
+                    weekIsActive: true,
+                    dayIsActive: false,
+                })
             };
 
             const goToMonthView = () => {
                 toolbar.onView(BigCalendar.Views.MONTH)
+                this.setState({
+                    monthIsActive: true,
+                    weekIsActive: false,
+                    dayIsActive: false,
+                })
             };
 
             const goToDayView = () => {
                 toolbar.onView(BigCalendar.Views.DAY)
+                this.setState({
+                    monthIsActive: false,
+                    weekIsActive: false,
+                    dayIsActive: true,
+                })
             };
 
             const label = () => {
@@ -53,9 +77,9 @@ class CustomToolbar extends React.Component {
                 <div className="mb-3 d-flex justify-content-between">
                     <div className="d-flex flex-column align-items-center">
                         <ButtonGroup size="sm">
-                            <Button outline color="primary" onClick={goToBack}>&#8249;</Button>
+                            <Button color="primary" onClick={goToBack}>&#8249;</Button>
                             <Button outline color="primary" onClick={goToCurrent}>today</Button>
-                            <Button outline color="primary" onClick={goToNext}>&#8250;</Button>
+                            <Button color="primary" onClick={goToNext}>&#8250;</Button>
                         </ButtonGroup>
                     </div>
                     <div className="d-flex flex-row align-items-center text-primary lead">
@@ -63,9 +87,9 @@ class CustomToolbar extends React.Component {
                     </div>
                     <div className="d-flex flex-column justify-content-end">
                         <ButtonGroup size="sm">
-                            <Button outline color="primary" onClick={goToMonthView}>Month</Button>
-                            <Button outline color="primary" onClick={goToWeekView}>Week</Button>
-                            <Button outline color="primary" onClick={goToDayView}>Day</Button>
+                            <Button active={this.state.monthIsActive} outline color="primary" onClick={goToMonthView}>Month</Button>
+                            <Button active={this.state.weekIsActive} outline color="primary" onClick={goToWeekView}>Week</Button>
+                            <Button active={this.state.dayIsActive} outline color="primary" onClick={goToDayView}>Day</Button>
                         </ButtonGroup>
                     </div>
                 </div>
@@ -75,6 +99,7 @@ class CustomToolbar extends React.Component {
         return (
             <Container className="calendar">
                 <BigCalendar
+                    views={allViews}
                     events={events}
                     step={60}
                     showMultiDayTimes
